@@ -42,13 +42,13 @@ public class DroolsWithKJarsServerArquillianTest implements ContainerFactory {
 
     @Override
     public Container newContainer(String... args) throws Exception {
-        return new Container().fraction(new DroolsServerFraction().installKJars(new String[]{"org.drools.workshop:drools-food-kjar:1.0-SNAPSHOT"}));
+        return new Container().fraction(new DroolsServerFraction());
     }
 
     @Test
     @RunAsClient
     public void testNothing() {
-
+        
     }
 
 }

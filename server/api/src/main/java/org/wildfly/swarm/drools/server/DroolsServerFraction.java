@@ -44,6 +44,7 @@ public class DroolsServerFraction implements Fraction {
 
     public DroolsServerFraction() {
     }
+   
 
     @Override
     public void postInitialize(Fraction.PostInitContext initContext) {
@@ -81,45 +82,5 @@ public class DroolsServerFraction implements Fraction {
         securityFraction.securityDomain(security);
         
     }
-    
-    
-    public DroolsServerFraction installKJars(String[] args) {
-        
-        if (args == null || args.length == 0) {
-            return this;
-        }        
-        String serverId = System.getProperty(KieServerConstants.KIE_SERVER_ID);
-        String controller = System.getProperty(KieServerConstants.KIE_SERVER_CONTROLLER);
-        
-        if ( controller != null) {
-            System.out.println("Controller is configured ("+controller+") - no local kjars can be installed");
-            return this;
-        }
-        
-        // proceed only when kie server id is given and there is no controller
-        if (serverId != null) {
-            KieServerStateFileRepository repository = new KieServerStateFileRepository();
-            KieServerState currentState = repository.load(serverId);
-            
-            Set<KieContainerResource> containers = new HashSet<KieContainerResource>();
-            for (String gav : args) {
-                String[] gavElements = gav.split(":");
-                System.out.printf(">>> Installing KJar: {0}:{1}:{2}",gavElements[0], gavElements[1], gavElements[2]);
-                
-                ReleaseId releaseId = new ReleaseId(gavElements[0], gavElements[1], gavElements[2]);
-                
-                
-                KieContainerResource container = new KieContainerResource(releaseId.getArtifactId(), releaseId, KieContainerStatus.STARTED);
-                containers.add(container);
-            }
-            
-            currentState.setContainers(containers);
-            
-            repository.store(serverId, currentState);
-        }
-        
-        return this;
-    }
-    
 
 }

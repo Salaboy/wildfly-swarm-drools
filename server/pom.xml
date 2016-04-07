@@ -9,23 +9,19 @@
 
     <parent>
         <groupId>org.wildfly.swarm</groupId>
-        <artifactId>kie-parent</artifactId>
+        <artifactId>drools-parent</artifactId>
         <version>1.0.0.Beta3-SNAPSHOT</version>
         <relativePath>../</relativePath>
     </parent>
 
     <groupId>org.wildfly.swarm</groupId>
-    <artifactId>kie-server-parent</artifactId>
+    <artifactId>drools-server-parent</artifactId>
 
-    <name>WildFly Swarm: Kie Server Parent</name>
-    <description>WildFly Swarm: Kie Server Parent</description>
+    <name>WildFly Swarm: Drools Server Parent</name>
+    <description>WildFly Swarm: Drools Server Parent</description>
 
     <packaging>pom</packaging>
   
-    <properties>
-        <version.org.kie>6.4.0.CR2</version.org.kie>
-    </properties>
-
     <dependencies>
         <dependency>
             <groupId>org.wildfly.swarm</groupId>
@@ -38,20 +34,12 @@
     </dependencies>
 
     <modules>
-        <module>kie-server</module>
+        <module>drools-server</module>
 
         <module>api</module>
         <module>runtime</module>
         <module>modules</module>
         <module>test</module>
     </modules>
-
-    <repositories>
-        <repository>
-            <id>jboss-public-repository-group</id>
-            <name>JBoss Public Repository Group</name>
-            <url>https://repository.jboss.org/nexus/content/groups/public/</url>
-        </repository>
-    </repositories>
 
 </project>

@@ -9,16 +9,16 @@
 
   <parent>
     <groupId>org.wildfly.swarm</groupId>
-    <artifactId>kie-server-parent</artifactId>
+    <artifactId>drools-server-parent</artifactId>
     <version>1.0.0.Beta3-SNAPSHOT</version>
     <relativePath>../</relativePath>
   </parent>
 
   <groupId>org.wildfly.swarm</groupId>
-  <artifactId>kie-server-api</artifactId>
+  <artifactId>drools-server-api</artifactId>
 
-  <name>WildFly Swarm: Kie Server API</name>
-  <description>WildFly Swarm: Kie Server API</description>
+  <name>WildFly Swarm: Drools Server API</name>
+  <description>WildFly Swarm: Drools Server API</description>
 
   <packaging>jar</packaging>
 
@@ -38,7 +38,7 @@
     </dependency>
     <dependency>
       <groupId>org.wildfly.swarm</groupId>
-      <artifactId>kie-server-modules</artifactId>
+      <artifactId>drools-server-modules</artifactId>
     </dependency>
     <dependency>
       <groupId>org.wildfly.swarm</groupId>

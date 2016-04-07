@@ -13,7 +13,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package org.wildfly.swarm.kie.server;
+package org.wildfly.swarm.drools.server;
 
 import org.jboss.arquillian.container.test.api.Deployment;
 import org.jboss.arquillian.container.test.api.RunAsClient;
@@ -31,7 +31,7 @@ import org.wildfly.swarm.spi.api.JARArchive;
  * @author Salaboy
  */
 @RunWith(Arquillian.class)
-public class KieServerArquillianTest implements ContainerFactory {
+public class DroolsServerArquillianTest implements ContainerFactory {
 
     @Deployment(testable = false)
     public static Archive createDeployment() {
@@ -42,7 +42,7 @@ public class KieServerArquillianTest implements ContainerFactory {
 
     @Override
     public Container newContainer(String... args) throws Exception {
-        return new Container().fraction(new KieServerFraction());
+        return new Container().fraction(new DroolsServerFraction());
     }
 
     @Test

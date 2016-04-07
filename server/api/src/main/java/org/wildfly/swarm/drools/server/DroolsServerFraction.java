@@ -13,7 +13,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package org.wildfly.swarm.kie.server;
+package org.wildfly.swarm.drools.server;
 
 import java.io.File;
 import java.io.IOException;
@@ -38,22 +38,21 @@ import org.wildfly.swarm.spi.api.Fraction;
 /**
  * @author Salaboy
  */
-public class KieServerFraction implements Fraction {
+public class DroolsServerFraction implements Fraction {
     
-    private static String configFolder = System.getProperty("org.kie.server.swarm.security.conf");
+    private static String configFolder = System.getProperty("org.drools.server.swarm.security.conf");
 
-    public KieServerFraction() {
+    public DroolsServerFraction() {
     }
 
     @Override
     public void postInitialize(Fraction.PostInitContext initContext) {
-        
-        
-        if (System.getProperty("org.kie.server.swarm.security.conf") == null) {
+
+        if (System.getProperty("org.drools.server.swarm.security.conf") == null) {
             try {
                 //Path dir = Files.createTempDirectory("swarm-keycloak-config");
-                File dir = TempFileManager.INSTANCE.newTempDirectory("swarm-kie-security-config", ".d");
-                System.setProperty("org.kie.server.swarm.conf", dir.getAbsolutePath());
+                File dir = TempFileManager.INSTANCE.newTempDirectory("swarm-drools-security-config", ".d");
+                System.setProperty("org.drools.server.swarm.conf", dir.getAbsolutePath());
                 Files.copy(getClass().getClassLoader().getResourceAsStream("config/security/application-users.properties"),
                            dir.toPath().resolve("application-users.properties"),
                            StandardCopyOption.REPLACE_EXISTING);
@@ -81,46 +80,6 @@ public class KieServerFraction implements Fraction {
         SecurityFraction securityFraction = (SecurityFraction) initContext.fraction("security");
         securityFraction.securityDomain(security);
         
-//        container.fraction(new SecurityFraction().securityDomain(security));
-        
-        
-        
-        
-
-//        if (System.getProperty("jboss.server.config.dir") == null) {
-//            try {
-//                //Path dir = Files.createTempDirectory("swarm-keycloak-config");
-//                File dir = TempFileManager.INSTANCE.newTempDirectory("swarm-keycloak-config", ".d");
-//                System.setProperty("jboss.server.config.dir", dir.getAbsolutePath());
-//                Files.copy(getClass().getClassLoader().getResourceAsStream("keycloak-server.json"),
-//                           dir.toPath().resolve("keycloak-server.json"),
-//                           StandardCopyOption.REPLACE_EXISTING);
-//            } catch (IOException e) {
-//                e.printStackTrace();
-//            }
-//        }
-
-
-//        DatasourcesFraction datasources = (DatasourcesFraction) initContext.fraction("datasources");
-//
-//        if (datasources.subresources().dataSource("KeycloakDS") == null) {
-//            if (datasources.subresources().jdbcDriver("h2") == null) {
-//                datasources.jdbcDriver("h2", (driver) -> {
-//                    driver.driverModuleName("com.h2database.h2");
-//                    driver.moduleSlot("main");
-//                    driver.xaDatasourceClass("org.h2.jdbcx.JdbcDataSource");
-//                });
-//            }
-//
-//            datasources.dataSource("KeycloakDS", (ds) -> {
-//                ds.jndiName("java:jboss/datasources/KeycloakDS");
-//                ds.useJavaContext(true);
-//                ds.connectionUrl("jdbc:h2:${wildfly.swarm.keycloak.server.db:./keycloak};AUTO_SERVER=TRUE");
-//                ds.driverName("h2");
-//                ds.userName("sa");
-//                ds.password("sa");
-//            });
-//        }
     }
     
     

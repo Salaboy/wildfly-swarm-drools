@@ -13,7 +13,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package org.wildfly.swarm.kie.server;
+package org.wildfly.swarm.drools.server;
 
 import org.junit.Test;
 import org.wildfly.swarm.container.Container;
@@ -21,12 +21,12 @@ import org.wildfly.swarm.container.Container;
 /**
  * @author Salaboy
  */
-public class KieServerInVmTest {
+public class DroolsServerInVmTest {
 
     @Test
     public void testSimple() throws Exception {
         Container container = new Container();
-        container.fraction(new KieServerFraction());
+        container.fraction(new DroolsServerFraction());
         container.start().stop();
     }
 }
